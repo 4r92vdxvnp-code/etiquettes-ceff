@@ -1,0 +1,29 @@
+{
+  "name": "@ceff/export-pdf",
+  "version": "0.1.0",
+  "description": "Generateur de plan d'etiquetage en PDF, format A3 paysage avec cotation type plan technique",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@ceff/core": "file:../core",
+    "pdf-lib": "^1.17.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "pdf-parse": "^1.1.1",
+    "typescript": "^5.4.0",
+    "vitest": "^1.4.0"
+  }
+}

@@ -1,0 +1,48 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Build outputs
+dist/
+build/
+*.tsbuildinfo
+
+# Tests
+coverage/
+.vitest/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Outputs PDF/Excel de test (regenerables)
+*.pdf
+*.xlsx
+!docs/**/*.pdf
+!docs/**/*.xlsx
+
+# Lockfiles : on garde package-lock.json
+# yarn.lock et pnpm-lock.yaml ignores au cas ou
+yarn.lock
+pnpm-lock.yaml
