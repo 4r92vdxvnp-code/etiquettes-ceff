@@ -141,8 +141,8 @@ function drawBanners(
         heightMm: project.heightMm,
         bgColor: project.bgColor,
         textColor: project.textColor,
-        customBgColorHex: project.customBgColorHex,
-        customTextColorHex: project.customTextColorHex,
+        ...(project.customBgColorHex !== undefined ? { customBgColorHex: project.customBgColorHex } : {}),
+        ...(project.customTextColorHex !== undefined ? { customTextColorHex: project.customTextColorHex } : {}),
       })
     ),
     {

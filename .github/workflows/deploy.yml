@@ -28,7 +28,11 @@ jobs:
           cache: npm
           cache-dependency-path: apps/web/package-lock.json
 
-      - name: Install dependencies
+      - name: Install export-pdf dependencies
+        run: npm install
+        working-directory: packages/export-pdf
+
+      - name: Install web dependencies
         run: npm install
         working-directory: apps/web
 
