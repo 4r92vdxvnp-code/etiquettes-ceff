@@ -27,7 +27,7 @@ export function Header(): JSX.Element {
         <div className="flex items-center gap-4">
           {!logoError ? (
             <img
-              src="/logo.png"
+              src={`${import.meta.env.BASE_URL}logo.png`}
               alt="Logo"
               className="h-10 object-contain"
               onError={() => setLogoError(true)}

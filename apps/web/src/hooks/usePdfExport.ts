@@ -21,7 +21,7 @@ function slugifyAffaire(affaire: string): string {
 /** Tente de charger le logo natif depuis /logo.png. Retourne undefined si absent. */
 async function fetchNativeLogo(): Promise<Uint8Array | undefined> {
   try {
-    const res = await fetch('/logo.png');
+    const res = await fetch(`${import.meta.env.BASE_URL}logo.png`);
     if (!res.ok) return undefined;
     const buf = await res.arrayBuffer();
     return new Uint8Array(buf);
