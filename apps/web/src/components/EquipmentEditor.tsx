@@ -79,9 +79,9 @@ export function EquipmentEditor({ equipment, rowId, project }: EquipmentEditorPr
         hasError ? 'border-[#C00000] bg-red-50' : 'border-gray-200 bg-white'
       }`}
     >
+      {/* Ligne libellé + bouton supprimer */}
       <div className="flex items-start gap-2">
-        {/* Libelle */}
-        <div className="flex-1 min-w-[120px]">
+        <div className="flex-1 min-w-0">
           <label className="mb-0.5 block text-xs text-gray-500">Libellé</label>
           <textarea
             rows={2}
@@ -92,57 +92,55 @@ export function EquipmentEditor({ equipment, rowId, project }: EquipmentEditorPr
           />
         </div>
 
-        {/* Largeur */}
-        <div className="w-44 space-y-1">
-          <label className="mb-0.5 block text-xs text-gray-500">Larg. module</label>
-          <select
-            value={equipment.widthHalfModules}
-            onChange={(e) => handleSelectWidth(Number(e.target.value))}
-            className="w-full rounded border border-gray-300 px-1.5 py-1 text-xs focus:border-[#1F3864] focus:outline-none focus:ring-1 focus:ring-[#1F3864]"
-          >
-            {WIDTH_OPTIONS.find((o) => o.hm === equipment.widthHalfModules) === undefined && (
-              <option value={equipment.widthHalfModules}>
-                {equipment.widthHalfModules} × 9 mm (personnalisé)
-              </option>
-            )}
-            {WIDTH_OPTIONS.map((o) => (
-              <option key={o.hm} value={o.hm}>{o.label}</option>
-            ))}
-          </select>
-
-          {/* Champ libre mm */}
-          <div className="flex items-center gap-1">
-            <span className="text-[10px] text-gray-400 shrink-0">ou exactement :</span>
-            <input
-              type="number"
-              min={1}
-              step={0.5}
-              value={customMmStr}
-              onChange={(e) => handleCustomMmChange(e.target.value)}
-              placeholder="mm"
-              className="w-full rounded border border-gray-300 px-1.5 py-0.5 text-xs text-right focus:border-[#1F3864] focus:outline-none"
-            />
-            <span className="text-[10px] text-gray-400 shrink-0">mm</span>
-          </div>
-          {equipment.widthMm !== undefined && (
-            <p className="text-[10px] text-[#1F3864]">
-              Mesure exacte : {equipment.widthMm} mm
-            </p>
-          )}
-        </div>
-
         {/* Supprimer */}
-        <div className="flex items-end pb-0.5">
-          <button
-            onClick={() => removeEquipment(rowId, equipment.id)}
-            title="Supprimer l'équipement"
-            className="flex h-7 w-7 items-center justify-center rounded border border-gray-300 text-gray-400 hover:border-[#C00000] hover:bg-red-50 hover:text-[#C00000] transition"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
+        <button
+          onClick={() => removeEquipment(rowId, equipment.id)}
+          title="Supprimer l'équipement"
+          className="mt-5 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded border border-gray-300 text-gray-400 hover:border-[#C00000] hover:bg-red-50 hover:text-[#C00000] transition"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      {/* Ligne largeur */}
+      <div className="space-y-1">
+        <label className="mb-0.5 block text-xs text-gray-500">Largeur</label>
+        <select
+          value={equipment.widthHalfModules}
+          onChange={(e) => handleSelectWidth(Number(e.target.value))}
+          className="w-full rounded border border-gray-300 px-1.5 py-1.5 text-sm focus:border-[#1F3864] focus:outline-none focus:ring-1 focus:ring-[#1F3864]"
+        >
+          {WIDTH_OPTIONS.find((o) => o.hm === equipment.widthHalfModules) === undefined && (
+            <option value={equipment.widthHalfModules}>
+              {equipment.widthHalfModules} × 9 mm (personnalisé)
+            </option>
+          )}
+          {WIDTH_OPTIONS.map((o) => (
+            <option key={o.hm} value={o.hm}>{o.label}</option>
+          ))}
+        </select>
+
+        {/* Champ libre mm */}
+        <div className="flex items-center gap-1">
+          <span className="text-[10px] text-gray-400 shrink-0">ou exactement :</span>
+          <input
+            type="number"
+            min={1}
+            step={0.5}
+            value={customMmStr}
+            onChange={(e) => handleCustomMmChange(e.target.value)}
+            placeholder="mm"
+            className="w-full rounded border border-gray-300 px-1.5 py-0.5 text-xs text-right focus:border-[#1F3864] focus:outline-none"
+          />
+          <span className="text-[10px] text-gray-400 shrink-0">mm</span>
         </div>
+        {equipment.widthMm !== undefined && (
+          <p className="text-[10px] text-[#1F3864]">
+            Mesure exacte : {equipment.widthMm} mm
+          </p>
+        )}
       </div>
 
       {/* Infos position */}
